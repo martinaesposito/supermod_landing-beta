@@ -451,15 +451,12 @@ body.sys7 .banzi-mac {
 
   section.container.hero {
     min-height: 100vh;
-  }
-
-  .hero {
-    min-height: 100vh;
-  background-size: 200%;
-  background-position: -20vw 5vh;
+  min-height: 100vh;
+  background-size: 275%;
+  background-position: -60vw 5vh;
 }
   section.container.about {
-    background-image: url('assets/BG_white_static_V.webp');
+    /* background-image: url('assets/BG_white_static_V.webp'); */
     padding-top: 7.5vh;
     padding-bottom: 10vh;
     gap: 3vh;
