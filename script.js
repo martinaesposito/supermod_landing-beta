@@ -3,6 +3,7 @@
 
   const RESvideo = 600;  // larghezza (px) a cui viene fatto il dither: piu basso = piu "grosso".
   const RESimg = 500;
+  const FS_FRACTIONS = [7/16, 3/16, 5/16, 1/16];
 
  function ditherPixels(px, w, h) {
     // 1) scala di grigi (luminanza)
@@ -18,20 +19,16 @@
         const newR = oldR < 128 ? 0 : 255;
         px[idx] = px[idx + 1] = px[idx + 2] = newR;
         const err = oldR - newR;
-        distribute(px, w, h, x + 1, y,     (err * 7) / 16);
-        distribute(px, w, h, x - 1, y + 1, (err * 3) / 16);
-        distribute(px, w, h, x,     y + 1, (err * 5) / 16);
-        distribute(px, w, h, x + 1, y + 1, (err * 1) / 16);
+        const f = FS_FRACTIONS;
+        const right = x + 1, left = x - 1, below = y + 1;
+        if (right < w) { const i = (right + y * w) * 4; px[i] += err * f[0]; px[i+1] += err * f[0]; px[i+2] += err * f[0]; }
+        if (below < h) {
+          if (left >= 0) { const i = (left + below * w) * 4; px[i] += err * f[1]; px[i+1] += err * f[1]; px[i+2] += err * f[1]; }
+          { const i = (x + below * w) * 4; px[i] += err * f[2]; px[i+1] += err * f[2]; px[i+2] += err * f[2]; }
+          if (right < w) { const i = (right + below * w) * 4; px[i] += err * f[3]; px[i+1] += err * f[3]; px[i+2] += err * f[3]; }
+        }
       }
     }
-  }
-
-  function distribute(px, w, h, x, y, err) {
-    if (x < 0 || x >= w || y < 0 || y >= h) return;
-    const idx = (x + y * w) * 4;
-    px[idx] += err;
-    px[idx + 1] += err;
-    px[idx + 2] += err;
   }
 
   function scaledSize(srcW, srcH, RES) {

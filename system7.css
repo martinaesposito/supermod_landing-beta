@@ -90,11 +90,11 @@ body.sys7 .s7-titlebar{
   background: repeating-linear-gradient(0deg, #000 0 1px, #fff 1px 3px);
   /* width:100%; */
 }
-.s7-titlebar .box{                          /* quadratini chiudi / zoom */
+.s7-titlebar .box{
   width: 13px; height: 11px; flex: 0 0 auto;
   background: #fff; border: 1.5px solid #000;
 }
-.s7-titlebar .ttl{                          /* titolo su fondo bianco, "buca" le righe */
+.s7-titlebar .ttl{
   background: #fff; padding: 0 10px;
   font: 700 13px/1 var(--s7-chrome); white-space: nowrap;
 }
@@ -185,8 +185,7 @@ body.sys7 .naming{
    ===================================================================== */
 .s7-toggle{
   position: fixed; right: 16px; bottom: 16px; z-index: 10002;
-  padding: 7px 12px; 
-  /* cursor: pointer; */
+  padding: 7px 12px;
   font: 13px/1 "Silkscreen", system-ui, sans-serif;
   background: #fff; color: #000;
   border: 2px solid #000; border-radius: 0;

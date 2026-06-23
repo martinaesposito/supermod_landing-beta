@@ -87,7 +87,6 @@ div {
   margin: 0;
   padding: 0;
   width: auto;
-  /* display: flex; */
 }
 p{  max-width: 92.5%;}
 
@@ -113,7 +112,6 @@ section.container {
 
 .h3 {
   font-size: 2.1rem;
-  /* font-family: OT-Bold, 'Inter', system-ui, -apple-system, sans-serif;  */
 }
 
 .h4 {
@@ -142,17 +140,13 @@ section.container {
 }
 
 /* hero */
-.hero {
+section.container.hero {
   background-color: var(--sm-cream-2);
   background-image: url('assets/SuperModerno-S-Icon-White.svg');
   background-repeat: no-repeat;
   background-size: 105%;
   /* regola finché la S ha la grandezza giusta */
   background-position: 20vw -36vh;
-
-}
-
-section.container.hero {
   padding-top: 10vh;
   gap: 7.5vh;
 }
@@ -164,16 +158,12 @@ section.container.presentation {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-
   height: 60vh;
-  /* background: var(--sm-red); */
-  /* color: var(--sm-cream); */
-    color: var(--sm-near-black);
+  color: var(--sm-near-black);
 }
 
 a.pres {
-  /* color: var(--sm-cream)  */
-      color: var(--sm-near-black)! important;
+  color: var(--sm-near-black)!important;
 }
 
 /* about */
@@ -239,7 +229,6 @@ canvas.img {
 section.container.founder {
   padding: 0 15vw;
   position: relative;
-  /* justify-content: center; */
   overflow: hidden;
   align-items: stretch;
   height: auto;
@@ -261,7 +250,6 @@ section.container.founder {
   flex: 0 0 auto;
   align-self: flex-end;
   mix-blend-mode: multiply;
-  /* filter: contrast(1.05) brightness(0.95); */
   border-radius: 0.5vw;
 }
 
@@ -272,7 +260,7 @@ section.container.find {
   position: relative;
   overflow: hidden;
   /* align-items: center; */
-  /* justify-content: center; */
+
   gap: 10vh;
 }
 
@@ -317,13 +305,11 @@ section.container.find {
 .yt-strip {
   --yt-card-w: 30vw;
   --yt-gap: 3vw;
-  
   max-width: none;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
   position: relative;
-  /* background-color: var(--sm-red); */
 }
 
 .yt-track {
