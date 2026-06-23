@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuperModerno</title>
+<meta name="description" content="SuperModerno is a platform dedicated to the history of technology, telling the stories of people and companies that have helped shape the modern world.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SuperModerno">
+<meta property="og:site_name" content="SuperModerno">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Font d'epoca usati dalla "macchina del tempo" -->
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --sm-red:        #EE5445;
+    --sm-red-dark:   #D1443C;
+    --sm-cream:      #ECEBE2;
+    --sm-cream-2:    #F5F4EE;
+    --sm-near-black: #221F1F;
+    --sm-dark-2:     #2E2A2A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    color: var(--sm-near-black);
+    background: var(--sm-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  img, svg { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; transition: color .2s ease; }
+  a:hover { color: var(--sm-red-dark); }
+  strong, b { font-weight: 700; }
+  ::selection { background: var(--sm-red); color: var(--sm-cream); }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------- Header logo (top-left) ---------- */
+  .brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .brand .s-mark {
+    width: 90px;
+    height: auto;
+  }
+  .brand .s-mark path { fill: var(--sm-near-black); }
+  .brand .name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--sm-near-black);
+    line-height: 1;
+  }
+
+  /* ---------- SECTION 1: Hero ---------- */
+  .hero {
+    background-color: var(--sm-cream);
+    background-image: url('assets/background-1.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover;
+    padding: 70px 0 60px;
+    position: relative;
+    overflow: hidden;
+    min-height: 620px;
+  }
+  .hero .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 60px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-left .intro-line {
+    width: 64px;
+    height: 3px;
+    background: var(--sm-red);
+    margin: 28px 0 24px;
+  }
+  .hero-left p {
+    color: var(--sm-red);
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 500;
+    margin: 0 0 20px;
+    max-width: 460px;
+    letter-spacing: -0.01em;
+  }
+  .hero-left p strong { font-weight: 700; }
+
+  .hero-right {
+    /* Background image carries the blob composition now — keep the right
+       grid column empty so text stays on the left half and the blob reads. */
+    display: none;
+  }
+
+  /* ---------- SECTION 2: About Us ---------- */
+  .about {
+    background: var(--sm-cream);
+    padding: 80px 0 100px;
+  }
+  .about .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 80px;
+    align-items: start;
+  }
+  .about-heading {
+    padding-left: 40px;
+  }
+  .about-heading .accent {
+    width: 60px;
+    height: 3px;
+    background: var(--sm-near-black);
+    margin-bottom: 18px;
+  }
+  .about-heading h2 {
+    margin: 0;
+    color: var(--sm-near-black);
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .about-body p {
+    color: var(--sm-red);
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- Triangular section notch ---------- */
+  .notch {
+    position: relative;
+  }
+  .notch::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -1px);
+    width: 28px;
+    height: 14px;
+    background: inherit;
+    /* hack: this won't work directly; we use clip-path */
+  }
+  /* Real notch implementation using SVG inside section */
+  .section-with-notch {
+    position: relative;
+  }
+  .section-with-notch .notch-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 14px;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* ---------- SECTION 3: Banzi (RED) ---------- */
+  .banzi {
+    background: var(--sm-red);
+    padding: 100px 0 110px;
+  }
+  .banzi .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 80px;
+    align-items: center;
+  }
+  .banzi-photo {
+    text-align: center;
+  }
+  .banzi-photo img {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    /* Apply duotone on the gray dithered original via blend modes */
+    mix-blend-mode: multiply;
+    filter: contrast(1.05) brightness(0.95);
+  }
+  .banzi-body .accent {
+    width: 60px;
+    height: 3px;
+    background: var(--sm-near-black);
+    margin-bottom: 18px;
+  }
+  .banzi-body p {
+    color: var(--sm-cream);
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    max-width: 520px;
+    letter-spacing: -0.01em;
+  }
+  .banzi-body strong { color: #ffffff; font-weight: 700; }
+
+  /* ---------- SECTION 4: Where to find us (DARK) ---------- */
+  .find {
+    background: var(--sm-near-black);
+    color: var(--sm-cream);
+    padding: 110px 0 60px;
+    position: relative;
+  }
+  .find .container { text-align: center; }
+  .find h2 {
+    color: var(--sm-cream);
+    font-size: 38px;
+    font-weight: 700;
+    margin: 0 0 48px;
+    letter-spacing: -0.02em;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 0 0 80px;
+    flex-wrap: wrap;
+  }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--sm-cream);
+    color: var(--sm-near-black);
+    transition: transform .2s ease, background-color .2s ease;
+  }
+  .social-btn:hover {
+    transform: scale(1.08);
+    background: #ffffff;
+    color: var(--sm-near-black);
+  }
+  .social-btn svg { width: 28px; height: 28px; }
+
+  .gameboy {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 20px;
+  }
+  .gameboy img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    /* Image is black-on-transparent; tint to cream/white to read on near-black bg */
+    filter: invert(1) brightness(0.95);
+  }
+
+  /* Wavy bottom edge of the dark section */
+  .find::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 32' preserveAspectRatio='none'><path d='M0,16 C100,4 200,28 300,16 C400,4 500,28 600,16 C700,4 800,28 900,16 C1000,4 1100,28 1200,16 L1200,32 L0,32 Z' fill='%232E2A2A'/></svg>") no-repeat center bottom / 100% 100%;
+  }
+
+  /* ---------- SECTION 5: Contact ---------- */
+  .contact {
+    background: var(--sm-dark-2);
+    color: var(--sm-cream);
+    padding: 100px 0 60px;
+    text-align: center;
+  }
+  .contact h2 {
+    color: var(--sm-cream);
+    font-size: 38px;
+    font-weight: 700;
+    margin: 0 0 18px;
+    letter-spacing: -0.02em;
+  }
+  .contact .email a {
+    color: var(--sm-red);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .contact .email a:hover { color: var(--sm-red-dark); }
+
+  /* Bottom brand stamp on cream */
+  .footer-brand {
+    background: var(--sm-cream);
+    padding: 60px 0 70px;
+    text-align: center;
+  }
+  .footer-brand .brand { align-items: center; }
+  .footer-brand .s-mark { width: 90px; }
+  .footer-brand .name { font-size: 14px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .hero { padding: 50px 0 40px; }
+    .hero .container,
+    .about .container,
+    .banzi .container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .about-heading { padding-left: 0; }
+    .hero-left p,
+    .about-body p,
+    .banzi-body p { font-size: 19px; }
+    .about-heading h2,
+    .find h2,
+    .contact h2 { font-size: 30px; }
+    .hero-right { min-height: 260px; }
+    .banzi-photo img { max-width: 280px; }
+    .socials { gap: 18px; }
+    .social-btn { width: 56px; height: 56px; }
+    .social-btn svg { width: 24px; height: 24px; }
+  }
+  @media (max-width: 540px) {
+    .container { padding: 0 20px; }
+    .hero-left p, .about-body p, .banzi-body p { font-size: 17px; }
+    .about-heading h2, .find h2, .contact h2 { font-size: 26px; }
+    .brand .s-mark { width: 72px; }
+  }
+
+  /* ============================================================
+     MACCHINA DEL TEMPO
+     Epoche:  70s terminale  ·  80s Macintosh B/N  ·  90s web punk
+              ·  2000s web 2.0 finto-3D  ·  oggi (sito originale)
+     Architettura: <body data-era="..."> guida tutto tramite --era-*
+     "oggi" = il tuo sito, completamente intatto.
+     ============================================================ */
+
+  body{ --era-accent: var(--sm-red); }
+
+  /* -------- palette per epoca -------- */
+  body[data-era="terminal"]{
+    --era-bg:#050805; --era-fg:#43ff77; --era-accent:#9bffb8;
+    --era-font:"VT323", ui-monospace, "Courier New", monospace;
+    --era-head:"VT323", ui-monospace, monospace;
+  }
+  body[data-era="mac"]{
+    --era-bg:#bdbdbd; --era-fg:#000; --era-accent:#000;
+    --era-font:Geneva, Verdana, "Helvetica Neue", sans-serif;
+    --era-head:"Silkscreen", Geneva, sans-serif;
+  }
+  body[data-era="web1"]{
+    --era-bg:#0a0a14; --era-fg:#39ff14; --era-accent:#ff00ff;
+    --era-font:"Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
+    --era-head:"Comic Sans MS","Comic Sans",cursive;
+  }
+  body[data-era="web2"]{
+    --era-bg:#cfe7ff; --era-fg:#16384f; --era-accent:#ff7a18;
+    --era-font:"Trebuchet MS", Tahoma, Verdana, sans-serif;
+    --era-head:"Trebuchet MS", Tahoma, sans-serif;
+  }
+
+  /* keyframes condivisi */
+  @keyframes tm-blink{ 50%{opacity:0} }
+  @keyframes tm-rainbow{ to{ background-position:200% 0 } }
+  @keyframes tm-marq{ to{ transform:translateX(-100%) } }
+  @keyframes tm-barber{ to{ background-position:46px 0 } }
+  @keyframes tm-jump{ from{opacity:.8} to{opacity:0} }
+
+  /* ================= rivestimento di base (tutte tranne "oggi") ============ */
+  body:not([data-era="oggi"]){ font-family:var(--era-font); }
+
+  body:not([data-era="oggi"]) .hero,
+  body:not([data-era="oggi"]) .about,
+  body:not([data-era="oggi"]) .banzi,
+  body:not([data-era="oggi"]) .find,
+  body:not([data-era="oggi"]) .contact,
+  body:not([data-era="oggi"]) .footer-brand{
+    background:var(--era-bg); color:var(--era-fg);
+  }
+  body:not([data-era="oggi"]) .footer-brand{ background:transparent; }
+  body:not([data-era="oggi"]) .hero{ background-image:none; min-height:auto; }
+
+  body:not([data-era="oggi"]) h2{ color:var(--era-fg); font-family:var(--era-head); letter-spacing:0; }
+  body:not([data-era="oggi"]) .hero-left p,
+  body:not([data-era="oggi"]) .about-body p,
+  body:not([data-era="oggi"]) .banzi-body p,
+  body:not([data-era="oggi"]) .contact .email a{ color:var(--era-accent); }
+  body:not([data-era="oggi"]) .intro-line,
+  body:not([data-era="oggi"]) .accent{ background:var(--era-accent); }
+  body:not([data-era="oggi"]) a:hover{ color:var(--era-accent); }
+  body:not([data-era="oggi"]) .brand .s-mark path{ fill:var(--era-fg); }
+  body:not([data-era="oggi"]) .brand .name{ color:var(--era-fg); }
+  body:not([data-era="oggi"]) .banzi-photo img{ mix-blend-mode:normal; }
+  body:not([data-era="oggi"]) .gameboy img{ filter:none; }
+  body:not([data-era="oggi"]) .notch-svg{ display:none; }
+  body:not([data-era="oggi"]) .find::after{ display:none; }
+
+  /* la chrome d'epoca (menu Mac, marquee, ecc.) è nascosta di default */
+  .era-only{ display:none; }
+
+  /* =========================================================================
+     70s · TERMINALE  — solo righe di testo, niente box
+     ========================================================================= */
+  body[data-era="terminal"]{
+    font-size:21px; line-height:1.4; letter-spacing:.5px;
+    background:var(--era-bg);
+    text-shadow:0 0 5px rgba(67,255,119,.5);
+  }
+  body[data-era="terminal"]::after{                 /* scanline CRT */
+    content:""; position:fixed; inset:0; z-index:2000; pointer-events:none;
+    background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.25) 2px 4px);
+  }
+  body[data-era="terminal"] section{ padding:4px 0 !important; }
+  body[data-era="terminal"] .hero,
+  body[data-era="terminal"] .about,
+  body[data-era="terminal"] .banzi,
+  body[data-era="terminal"] .find,
+  body[data-era="terminal"] .contact,
+  body[data-era="terminal"] .footer-brand{ background:transparent; }
+  body[data-era="terminal"] .container{
+    display:block !important; max-width:760px; padding:0 18px; gap:0;
+  }
+  body[data-era="terminal"] .hero .container::before{      /* riga di boot */
+    content:"SUPERMODERNO TERMINAL  v19.72\A(c) RETROSCOPE SYSTEMS — READY.\A ";
+    white-space:pre; display:block; opacity:.85; margin:8px 0 14px;
+  }
+  body[data-era="terminal"] h2{ font-size:24px; margin:20px 0 2px; }
+  body[data-era="terminal"] h2::before{ content:"> "; }
+  body[data-era="terminal"] p{ max-width:72ch; margin:.25em 0; }
+  body[data-era="terminal"] .hero-left p,
+  body[data-era="terminal"] .about-body p,
+  body[data-era="terminal"] .banzi-body p{ color:var(--era-fg); }
+  body[data-era="terminal"] .intro-line,
+  body[data-era="terminal"] .accent{ display:none; }
+  body[data-era="terminal"] a{ text-decoration:underline; }
+  body[data-era="terminal"] .banzi-photo,
+  body[data-era="terminal"] .gameboy,
+  body[data-era="terminal"] .brand .s-mark{ display:none; }   /* terminale puro: niente immagini */
+  body[data-era="terminal"] .socials{ display:block; margin:6px 0; }
+  body[data-era="terminal"] .social-btn{
+    display:inline; width:auto; height:auto; background:none; color:var(--era-fg);
+    border:0; border-radius:0; margin-right:12px; transform:none;
+  }
+  body[data-era="terminal"] .social-btn svg{ display:none; }
+  body[data-era="terminal"] .social-btn::before{ content:"[" attr(aria-label) "]"; text-decoration:underline; }
+  body[data-era="terminal"] .footer-brand .container::after{
+    content:"supermoderno:~$ _"; display:block; margin-top:18px;
+    animation:tm-blink 1s steps(1) infinite;
+  }
+
+  /* =========================================================================
+     80s · MACINTOSH  — bianco/nero, scrivania a retino, finestre
+     ========================================================================= */
+  body[data-era="mac"]{
+    background-color:#fff;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' fill='%23000'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23000'/%3E%3C/svg%3E");
+  }
+  body[data-era="mac"] .mac-menubar{ display:flex; }
+  body[data-era="mac"] section{
+    position:relative; border:2px solid #000; box-shadow:4px 4px 0 #000;
+    margin:26px 22px; padding:46px 28px 28px;
+  }
+  body[data-era="mac"] .hero,
+  body[data-era="mac"] .about,
+  body[data-era="mac"] .banzi,
+  body[data-era="mac"] .find,
+  body[data-era="mac"] .contact{ background:#fff; color:#000; }
+  body[data-era="mac"] section::before{        /* barra del titolo a righe + chip centrale */
+    content:attr(data-win); position:absolute; top:0; left:0; right:0; height:22px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Silkscreen",Geneva,sans-serif; font-size:11px; color:#000;
+    border-bottom:2px solid #000;
+    background:
+      linear-gradient(#fff,#fff) center/56% 100% no-repeat,
+      repeating-linear-gradient(#000 0 1px, #fff 1px 3px);
+  }
+  body[data-era="mac"] section::after{         /* close box */
+    content:""; position:absolute; top:5px; left:9px; width:11px; height:11px;
+    background:#fff; border:2px solid #000;
+  }
+  body[data-era="mac"] .find::after{           /* annulla l'onda, rimette il close box */
+    content:""; display:block; position:absolute; inset:auto auto auto 9px; top:5px;
+    width:11px; height:11px; background:#fff; border:2px solid #000;
+  }
+  body[data-era="mac"] h2{ font-size:22px; }
+  body[data-era="mac"] .socials{ gap:14px; }
+  body[data-era="mac"] .social-btn{
+    width:auto; height:42px; padding:0 16px; border-radius:12px;
+    background:#fff; color:#000; border:2px solid #000; box-shadow:1px 1px 0 #000;
+  }
+  body[data-era="mac"] .social-btn:hover{ background:#000; color:#fff; transform:none; }
+  body[data-era="mac"] .banzi-photo img,
+  body[data-era="mac"] .gameboy img{ filter:grayscale(1) contrast(1.5); }
+
+  /* =========================================================================
+     90s · WEB 1.0  — punk, sfondo a stelle, marquee, "GIF" in CSS
+     ========================================================================= */
+  body[data-era="web1"]{
+    background-color:#0a0a14;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.6px),
+      radial-gradient(circle, rgba(255,0,255,.6) 1px, transparent 1.6px);
+    background-size:46px 46px, 73px 73px;
+    background-position:0 0, 23px 31px;
+  }
+  body[data-era="web1"] .hero,
+  body[data-era="web1"] .about,
+  body[data-era="web1"] .banzi,
+  body[data-era="web1"] .find,
+  body[data-era="web1"] .contact{ background:transparent; }
+  body[data-era="web1"] .web1-marquee{ display:block; }
+  body[data-era="web1"] .web1-construction{ display:flex; }
+  body[data-era="web1"] .web1-counter{ display:flex; }
+  body[data-era="web1"] h2{
+    font-family:"Comic Sans MS",cursive; font-weight:700;
+    background:linear-gradient(90deg,#ff00ff,#00ffff,#ffff00,#39ff14,#ff00ff);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text;
+    color:transparent; animation:tm-rainbow 4s linear infinite;
+  }
+  body[data-era="web1"] a{ color:#00ffff; text-decoration:underline; }
+  body[data-era="web1"] a:visited{ color:#ff77ff; }
+  body[data-era="web1"] a:hover{ color:#ffff00; }
+  body[data-era="web1"] .social-btn{
+    background:#000; color:#39ff14; border:3px outset #ff00ff; border-radius:0;
+  }
+  body[data-era="web1"] .social-btn:hover{ background:#ff00ff; color:#000; animation:tm-blink .35s steps(1) infinite; }
+
+  /* =========================================================================
+     2000s · WEB 2.0  — finto-3D, lucido, riflessi, badge beta
+     ========================================================================= */
+  body[data-era="web2"]{
+    background:radial-gradient(130% 90% at 50% -15%, #ffffff, #c7e6ff 55%, #7fb2e8 100%) fixed;
+  }
+  body[data-era="web2"] .web2-beta{ display:flex; }
+  body[data-era="web2"] section{
+    border:1px solid #b9d6f0; border-radius:20px;
+    box-shadow:0 12px 26px rgba(40,90,150,.28), inset 0 1px 0 #fff;
+    margin:24px 22px; padding:42px 32px;
+  }
+  body[data-era="web2"] .hero,
+  body[data-era="web2"] .about,
+  body[data-era="web2"] .banzi,
+  body[data-era="web2"] .find,
+  body[data-era="web2"] .contact{
+    background:linear-gradient(#ffffff,#e9f4ff); color:#16384f;
+  }
+  body[data-era="web2"] h2{
+    font-weight:800;
+    background:linear-gradient(#3a86e0,#15407e);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 2px 0 rgba(255,255,255,.7);
+  }
+  body[data-era="web2"] .social-btn{
+    width:auto; height:48px; padding:0 22px; border-radius:999px;
+    background:linear-gradient(#8fd0ff,#1f7fe0 49%,#1768c4 51%,#2a86e6);
+    color:#fff; border:1px solid #1559a8;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 5px 12px rgba(20,80,150,.4);
+  }
+  body[data-era="web2"] .social-btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+  body[data-era="web2"] .banzi-photo img{ border-radius:16px; box-shadow:0 10px 20px rgba(0,0,0,.28); }
+
+  /* =========================================================================
+     CHROME D'EPOCA (elementi reali nel DOM, accesi solo nell'epoca giusta)
+     ========================================================================= */
+  /* --- barra dei menu Macintosh --- */
+  .mac-menubar{
+    align-items:center; gap:20px; height:24px; padding:0 14px;
+    background:#fff; border-bottom:2px solid #000; position:sticky; top:0; z-index:80;
+    font-family:"Silkscreen",Geneva,sans-serif; font-size:11px; color:#000;
+  }
+  .mac-menubar svg{ width:14px; height:16px; }
+  .mac-menubar b{ font-weight:700; }
+
+  /* --- marquee scorrevole Web 1.0 --- */
+  .web1-marquee{
+    overflow:hidden; white-space:nowrap; position:sticky; top:0; z-index:80;
+    background:#000; color:#39ff14; padding:6px 0;
+    border-top:3px solid #ff00ff; border-bottom:3px solid #00ffff;
+    font-family:"Comic Sans MS",cursive; font-weight:700;
+  }
+  .web1-marquee span{ display:inline-block; padding-left:100%; animation:tm-marq 16s linear infinite; }
+
+  /* --- striscia "in costruzione" (barber pole animato) --- */
+  .web1-construction{
+    align-items:center; justify-content:center; gap:14px; margin:18px 22px; padding:10px;
+    color:#000; font-family:"Comic Sans MS",cursive; font-weight:700;
+    background:repeating-linear-gradient(45deg,#ffd400 0 16px,#000 16px 32px);
+    background-size:46px 46px; animation:tm-barber 1s linear infinite;
+    border:3px ridge #ffd400;
+  }
+  .web1-construction b{ background:#fff; padding:4px 10px; border:2px solid #000; }
+  .web1-blink{ animation:tm-blink .6s steps(1) infinite; color:#ff0; }
+
+  /* --- contatore visite Web 1.0 --- */
+  .web1-counter{
+    justify-content:center; align-items:center; gap:10px; flex-wrap:wrap;
+    margin:26px 0; color:#39ff14; font-family:"Comic Sans MS",cursive; text-align:center;
+  }
+  .web1-counter .odo{
+    font-family:ui-monospace,monospace; background:#000; color:#0f0;
+    border:2px inset #777; padding:4px 8px; letter-spacing:5px;
+  }
+
+  /* --- badge "beta" Web 2.0 --- */
+  .web2-beta{
+    position:fixed; top:14px; right:14px; z-index:80; width:78px; height:78px;
+    align-items:center; justify-content:center; transform:rotate(-12deg);
+    border-radius:50%; color:#fff; font:800 17px "Trebuchet MS",sans-serif;
+    background:radial-gradient(circle at 50% 28%, #ffb15a, #ff7a18 60%, #d85f00);
+    box-shadow:0 8px 16px rgba(0,0,0,.32), inset 0 2px 6px rgba(255,255,255,.65);
+  }
+
+  /* ============================================================
+     IL PANNELLO DELLA MACCHINA DEL TEMPO (sempre leggibile)
+     ============================================================ */
+  .tm{
+    position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+    z-index:9000; display:flex; align-items:center; gap:6px;
+    padding:7px 8px; border-radius:999px;
+    background:rgba(18,16,16,.92); color:#fff;
+    box-shadow:0 12px 34px rgba(0,0,0,.4);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    font-family:'Inter', system-ui, sans-serif;
+  }
+  .tm button{
+    cursor:pointer; border:0; border-radius:999px; padding:8px 12px;
+    font:inherit; font-weight:600; font-size:13px;
+    background:rgba(255,255,255,.12); color:#fff;
+  }
+  .tm button:hover{ background:rgba(255,255,255,.22); }
+  .tm button:disabled{ opacity:.35; cursor:default; }
+  .tm .disp{ text-align:center; min-width:104px; padding:0 6px; line-height:1.15; }
+  .tm .disp .yr{ font-weight:800; font-size:17px; color:var(--era-accent); }
+  .tm .disp .nm{ font-size:11px; opacity:.8; }
+  .tm button:focus-visible{ outline:2px solid var(--era-accent); outline-offset:2px; }
+
+  .tm-flash::before{
+    content:""; position:fixed; inset:0; z-index:8000; pointer-events:none;
+    background:#fff; animation:tm-jump .45s ease forwards;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tm-flash::before, body[data-era="web1"] *{ animation:none !important; }
+  }
+  @media (max-width:540px){ .tm .disp{ min-width:86px } }
+</style>
+</head>
+<body data-era="oggi">
+<!-- ===== CHROME D'EPOCA (mostrata solo nell'epoca giusta) ===== -->
+<div class="mac-menubar era-only" aria-hidden="true">
+  <svg viewBox="0 0 14 16" fill="#000" xmlns="http://www.w3.org/2000/svg"><path d="M9.6 0c.1 1-.3 1.9-.9 2.5-.6.6-1.5 1.1-2.4 1 0-.9.4-1.9 1-2.5C7.9.4 8.8 0 9.6 0zM12.7 12c-.3.7-.5 1-.9 1.6-.6.9-1.4 2-2.4 2-.9 0-1.1-.6-2.3-.6-1.2 0-1.5.6-2.3.6-1 0-1.8-1-2.4-1.9C.7 12 .1 9.6.9 8c.6-1.2 1.7-1.9 2.7-1.9 1 0 1.6.6 2.4.6.8 0 1.3-.6 2.4-.6.9 0 1.9.5 2.5 1.4-2.2 1.2-1.9 4.4.3 4.5z"/></svg>
+  <b>SuperModerno</b><span>File</span><span>Edit</span><span>View</span><span>Special</span><span>Stories</span>
+</div>
+
+<div class="web1-marquee era-only" aria-hidden="true"><span>&#9733; WELCOME TO SUPERMODERNO &#9733; THE HISTORY OF TECHNOLOGY &#9733; SIGN MY GUESTBOOK &#9733; BEST VIEWED IN NETSCAPE NAVIGATOR 800&#215;600 &#9733; </span></div>
+
+<div class="web1-construction era-only" aria-hidden="true"><b>&#128679; SITE UNDER CONSTRUCTION &#128679;</b><span class="web1-blink">&#9733; NEW! &#9733;</span></div>
+
+<div class="web2-beta era-only" aria-hidden="true">beta</div>
+
+
+<!-- ============================================================
+     SECTION 1: HERO  (logo top-left + red intro + white blobs)
+============================================================ -->
+<section class="hero" data-win="SuperModerno">
+  <div class="container">
+    <div class="hero-left">
+      <a href="/" class="brand" aria-label="SuperModerno — home">
+        <svg class="s-mark" viewBox="250 160 640 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#221F1F" d="M878.73,661.54c0,38.56-31.25,69.81-69.81,69.81s-69.81,31.26-69.81,69.81-31.25,69.81-69.81,69.81h-139.62c-38.55,0-69.81-31.25-69.81-69.81s-31.25-69.81-69.81-69.81-69.81-31.25-69.81-69.81,31.26-69.81,69.81-69.81,69.81,31.25,69.81,69.81,31.26,69.81,69.81,69.81h139.62c38.56,0,69.81-31.25,69.81-69.81s-31.25-69.81-69.81-69.81h-139.62c-38.55,0-69.81-31.26-69.81-69.81s-31.25-69.81-69.81-69.81-69.81-31.26-69.81-69.81,31.26-69.81,69.81-69.81,69.81-31.26,69.81-69.81,31.26-69.81,69.81-69.81h139.62c38.56,0,69.81,31.25,69.81,69.81s31.26,69.81,69.81,69.81,69.81,31.25,69.81,69.81-31.25,69.81-69.81,69.81-69.81-31.26-69.81-69.81-31.25-69.81-69.81-69.81h-139.62c-38.55,0-69.81,31.25-69.81,69.81s31.26,69.81,69.81,69.81h139.62c38.56,0,69.81,31.25,69.81,69.81s31.26,69.81,69.81,69.81,69.81,31.25,69.81,69.81Z"></path>
+        </svg>
+        <span class="name">SuperModerno</span>
+      </a>
+      <div class="intro-line"></div>
+      <p><strong>SuperModerno</strong> is a platform dedicated to the history of technology, telling the stories of the people and companies that have helped shape the modern world.</p>
+      <p>Through an in-depth look at the innovations of the past, we offer keys to understanding the future.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2: ABOUT US  (cream continues)
+============================================================ -->
+<section class="about" data-win="About Us">
+  <div class="container">
+    <div class="about-heading">
+      <div class="accent"></div>
+      <h2>About Us.</h2>
+    </div>
+    <div class="about-body">
+      <p>We share knowledge with the general public through online channels like YouTube, Instagram, LinkedIn and beyond. We tell the lessons learned from history through public talks, corporate presentations and courses. Finally, we run innovation workshops where, starting from companies' own breakthroughs, we help develop the products and services of the future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3: BANZI (red bg, cream notch at top)
+============================================================ -->
+<section class="banzi section-with-notch" data-win="Massimo Banzi">
+  <svg class="notch-svg" viewBox="0 0 20 10" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M10,10 L0,0 H20 Z" fill="#ECEBE2"></path>
+  </svg>
+  <div class="container">
+    <div class="banzi-photo">
+      <img src="assets/Banzi_gray-220x300.webp" alt="Massimo Banzi">
+    </div>
+    <div class="banzi-body">
+      <div class="accent"></div>
+      <p><strong>SuperModerno</strong> is created by <strong>Massimo Banzi</strong>, interaction designer, technologist and co-founder of Arduino, the computer that has allowed millions of people to innovate with digital technologies without being experts. A scholar of Innovation and the History of Technology, he translates the lessons of the past into maps for navigating the future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4: WHERE TO FIND US (near-black, red notch at top)
+============================================================ -->
+<section class="find section-with-notch" data-win="Where to find us">
+  <svg class="notch-svg" viewBox="0 0 20 10" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M10,10 L0,0 H20 Z" fill="#EE5445"></path>
+  </svg>
+  <div class="container">
+    <h2>Where to find us.</h2>
+
+    <div class="socials">
+      <a class="social-btn" href="https://www.instagram.com/supermoderno.tv/" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+          <circle cx="12" cy="12" r="4.2"/>
+          <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-btn" href="https://www.tiktok.com/@supermoderno.com" target="_blank" rel="noreferrer noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.6 2.5c.4 2.1 1.7 3.7 3.9 4.1v3.2c-1.5 0-2.9-.4-4.2-1.2v6.6c0 4.1-3.3 7.4-7.4 7.4S1.5 19.3 1.5 15.2s3.3-7.4 7.4-7.4c.4 0 .8 0 1.1.1v3.3c-.4-.1-.7-.2-1.1-.2-2.3 0-4.2 1.9-4.2 4.2s1.9 4.2 4.2 4.2 4.2-1.9 4.2-4.2V2.5h3.5z"/>
+        </svg>
+      </a>
+      <a class="social-btn" href="https://www.youtube.com/@supermodernotv" target="_blank" rel="noreferrer noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.5 7.2c-.2-1.2-.9-2-2-2.2-1.8-.4-8.5-.4-8.5-.4s-6.7 0-8.5.4c-1.1.2-1.8 1-2 2.2C1.2 9 1.2 12 1.2 12s0 3 .3 4.8c.2 1.2.9 2 2 2.2 1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4c1.1-.2 1.8-1 2-2.2.3-1.8.3-4.8.3-4.8s0-3-.3-4.8zM9.8 15.5V8.5l5.8 3.5-5.8 3.5z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="gameboy" aria-hidden="true">
+      <img src="assets/Gameboy_alpha_dark-1024x844.webp" alt="" width="360" height="297">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5: CONTACT (slightly lighter dark)
+============================================================ -->
+<section class="contact" data-win="Contact">
+  <div class="container">
+    <h2>Contact us.</h2>
+    <div class="email"><a href="mailto:hello@supermoderno.com">hello@supermoderno.com</a></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER: Brand stamp (cream)
+============================================================ -->
+<div class="web1-counter era-only" aria-hidden="true">
+  You are visitor&nbsp; <span class="odo">0 0 1 3 3 7</span> &nbsp;&middot;&nbsp; Best viewed in Netscape Navigator
+</div>
+
+<footer class="footer-brand">
+  <div class="container">
+    <a href="/" class="brand" aria-label="SuperModerno — home">
+      <svg class="s-mark" viewBox="250 160 640 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#221F1F" d="M878.73,661.54c0,38.56-31.25,69.81-69.81,69.81s-69.81,31.26-69.81,69.81-31.25,69.81-69.81,69.81h-139.62c-38.55,0-69.81-31.25-69.81-69.81s-31.25-69.81-69.81-69.81-69.81-31.25-69.81-69.81,31.26-69.81,69.81-69.81,69.81,31.25,69.81,69.81,31.26,69.81,69.81,69.81h139.62c38.56,0,69.81-31.25,69.81-69.81s-31.25-69.81-69.81-69.81h-139.62c-38.55,0-69.81-31.26-69.81-69.81s-31.25-69.81-69.81-69.81-69.81-31.26-69.81-69.81,31.26-69.81,69.81-69.81,69.81-31.26,69.81-69.81,31.26-69.81,69.81-69.81h139.62c38.56,0,69.81,31.25,69.81,69.81s31.26,69.81,69.81,69.81,69.81,31.25,69.81,69.81-31.25,69.81-69.81,69.81-69.81-31.26-69.81-69.81-31.25-69.81-69.81-69.81h-139.62c-38.55,0-69.81,31.25-69.81,69.81s31.26,69.81,69.81,69.81h139.62c38.56,0,69.81,31.25,69.81,69.81s31.26,69.81,69.81,69.81,69.81,31.25,69.81,69.81Z"></path>
+      </svg>
+      <span class="name">SuperModerno</span>
+    </a>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MACCHINA DEL TEMPO (pannello + logica)
+============================================================ -->
+<div class="tm" role="group" aria-label="Macchina del tempo">
+  <button id="tm-back" aria-label="Indietro nel tempo">⟵</button>
+  <div class="disp">
+    <div class="yr" id="tm-year">Oggi</div>
+    <div class="nm" id="tm-name">il sito odierno</div>
+  </div>
+  <button id="tm-fwd" aria-label="Avanti nel tempo">⟶</button>
+</div>
+
+<script>
+  // id = valore di data-era; year/name = etichette mostrate nel pannello
+  const ERAS = [
+    { id:"terminal", year:"1972", name:"anni 70 · terminale" },
+    { id:"mac",      year:"1984", name:"anni 80 · Macintosh" },
+    { id:"web1",     year:"1996", name:"anni 90 · web 1.0" },
+    { id:"web2",     year:"2004", name:"anni 2000 · web 2.0" },
+    { id:"oggi",     year:"Oggi", name:"il sito odierno" },
+  ];
+
+  let i = ERAS.length - 1;             // si parte da "Oggi"
+  const $ = s => document.getElementById(s);
+
+  function render(){
+    const era = ERAS[i];
+    document.body.dataset.era = era.id;          // <-- cambia tutto
+    $("tm-year").textContent = era.year;
+    $("tm-name").textContent = era.name;
+    $("tm-back").disabled = (i === 0);
+    $("tm-fwd").disabled  = (i === ERAS.length - 1);
+    // lampo del viaggio nel tempo
+    document.body.classList.remove("tm-flash");
+    void document.body.offsetWidth;
+    document.body.classList.add("tm-flash");
+  }
+
+  $("tm-back").addEventListener("click", () => { if(i>0){ i--; render(); } });
+  $("tm-fwd").addEventListener("click",  () => { if(i<ERAS.length-1){ i++; render(); } });
+
+  // frecce ⟵ ⟶ della tastiera
+  addEventListener("keydown", e => {
+    if(e.key==="ArrowLeft")  $("tm-back").click();
+    if(e.key==="ArrowRight") $("tm-fwd").click();
+  });
+</script>
+
+</body>
+</html>
