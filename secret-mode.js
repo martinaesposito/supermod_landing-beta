@@ -56,6 +56,24 @@
   const btn = document.createElement("button");
   btn.className = "s7-toggle";
   btn.type = "button";
+  btn.textContent = "back to 1984";
+  btn.setAttribute("aria-label", "Modalita' System 7");
+  Object.assign(btn.style, {
+    position: "fixed",
+    right: "16px",
+    bottom: "16px",
+    zIndex: "10002",
+    font: "13px/1 'Silkscreen', OT-Regular, sans-serif",
+    padding: "7px 12px",
+    cursor: "url('assets/hand-pointer.png') 8 1, pointer;",
+    background: "#fff",
+    color: "#000",
+    border: "2px solid #000",
+    borderRadius: "0",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+  });
   document.body.appendChild(btn);
 
   function label() {
@@ -64,8 +82,29 @@
     btn.setAttribute("aria-label", on ? "Torna al sito odierno" : "Modalita' System 7");
   }
 
+  function ensureSystemCss(on) {
+    const existing = document.getElementById("s7-css");
+    if (on) {
+      if (!existing) {
+        const link = document.createElement("link");
+        link.id = "s7-css";
+        link.rel = "stylesheet";
+        link.href = "system7.css";
+        document.head.appendChild(link);
+      }
+    } else if (existing) {
+      existing.remove();
+    }
+  }
+
+  function destroyChrome() {
+    document.querySelectorAll(".s7-menubar, .s7-titlebar").forEach((el) => el.remove());
+  }
+
   function setMode(on, withBoot) {
+    ensureSystemCss(on);
     if (on) buildChrome();
+    else destroyChrome();
     document.body.classList.toggle("sys7", on);
     try { localStorage.setItem(KEY, on ? "sys7" : "now"); } catch (e) {}
     label();
@@ -110,7 +149,5 @@
   }
 
   /* ---------- stato iniziale (senza boot) ---------- */
-  let saved = "now";
-  try { saved = localStorage.getItem(KEY) || "now"; } catch (e) {}
-  setMode(saved === "sys7", false);
+  setMode(false, false);
 })();

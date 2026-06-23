@@ -114,8 +114,23 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", () => {
+      init();
+      observeSys7();
+    });
   } else {
     init();
+    observeSys7();
+  }
+
+  function observeSys7() {
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        if (record.type === "attributes" && record.attributeName === "class") {
+          if (document.body.classList.contains("sys7")) init();
+        }
+      }
+    });
+    observer.observe(document.body, { attributes: true });
   }
 })();

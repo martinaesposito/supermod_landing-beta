@@ -12,20 +12,20 @@
   font-family: Geneva;
   /* set name */
   src: url(assets/Geneva.ttf);
-  /* url of the font */
+  font-display: swap;
 }
 
 @font-face {
   font-family: Chicago;
   /* set name */
   src: url(assets/Chicago.ttf);
-  /* url of the font */
+  font-display: swap;
 }
 @font-face {
   font-family: OT-Regular;
   /* set name */
   src: url(assets/OT/Regular.otf);
-  /* url of the font */
+  font-display: swap;
 }
 body.sys7{
   --s7-chrome: Chicago, system-ui, sans-serif;          /* UI bitmap */
@@ -118,8 +118,8 @@ body.sys7 .s7-menubar{
 /* ---------------------------------------------------------------------
    TIPOGRAFIA
    --------------------------------------------------------------------- */
-body.sys7 .h2{ font-size: 2.4rem; line-height: 1.15; font-weight: 700; }
-body.sys7 .h3{ font-size: 1.7rem;  line-height: 1.2;  font-weight: 700; }
+body.sys7 .h2{ font-size: 2.1rem; line-height: 1.15; font-weight: 700; }
+body.sys7 .h3{ font-size: 1.5rem;  line-height: 1.2;  font-weight: 700; }
 body.sys7 .h4{ font-size: 1.25rem; font-weight: 700; }
 body.sys7 b, body.sys7 strong{ font-family: inherit; font-weight: 700; }
 body.sys7 i{ font-style: italic; }
@@ -198,6 +198,7 @@ body.sys7 .s7-toggle{
   font-family: OT-Regular, "Courier New", monospace;
   font-weight: 700;
   letter-spacing: .04em;
+  cursor: url('assets/hand-pointer.png') 8 1, pointer;
 }
  
 /* =====================================================================
@@ -234,10 +235,8 @@ body.sys7 * {
 body.sys7 a,
 body.sys7 button,
 body.sys7 .social-btn,
-body.sys7 button.s7-toggle
-body.sys7 a {
+body.sys7 button.s7-toggle {
   cursor: url('assets/hand-pointer.png') 8 1, pointer;
-
 }
  
 /* ---------- Responsive: finestre piu' strette su mobile ---------- */
