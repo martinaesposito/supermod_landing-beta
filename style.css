@@ -107,7 +107,7 @@ section.container {
 
 /* text */
 .h2 {
-  font-size: 2.7rem;
+  font-size: 3rem;
   line-height: 1.2;
 }
 
@@ -267,11 +267,11 @@ section.container.founder {
 
 /* social */
 section.container.find {
-  height: 80vh;
+  height: 60vh;
   position: relative;
   overflow: hidden;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 10vh;
 }
 

@@ -126,7 +126,7 @@ body.sys7 i{ font-style: italic; }
  
 /* link: nero sottolineato, hover in inverse */
 body.sys7 a{ color: #000; text-decoration: underline; }
-body.sys7 a:hover{ background: #000; color: #fff; }
+body.sys7 a:hover{ background: #000; color: #fff !important; }
  
 /* selezione testo = inverse classico */
 ::selection{ background: #000; color: #fff; }
@@ -185,7 +185,8 @@ body.sys7 .naming{
    ===================================================================== */
 .s7-toggle{
   position: fixed; right: 16px; bottom: 16px; z-index: 10002;
-  padding: 7px 12px; cursor: pointer;
+  padding: 7px 12px; 
+  /* cursor: pointer; */
   font: 13px/1 "Silkscreen", system-ui, sans-serif;
   background: #fff; color: #000;
   border: 2px solid #000; border-radius: 0;
@@ -233,8 +234,10 @@ body.sys7 * {
 body.sys7 a,
 body.sys7 button,
 body.sys7 .social-btn,
+body.sys7 button.s7-toggle
 body.sys7 a {
   cursor: url('assets/hand-pointer.png') 8 1, pointer;
+
 }
  
 /* ---------- Responsive: finestre piu' strette su mobile ---------- */
