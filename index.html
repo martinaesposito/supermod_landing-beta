@@ -6,39 +6,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SuperModerno</title>
   <meta name="description"
-    content="SuperModerno is a platform dedicated to the history of technology, telling the stories of people and companies that have helped shape the modern world.">
+    content="SuperModerno is a media company and consultancy committed to making technology understandable for everyone.">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="SuperModerno">
   <meta property="og:site_name" content="SuperModerno">
 
-  <link rel="icon" href="https://i0.wp.com/supermoderno.com/wp-content/uploads/2024/10/logo_sito-1.png?fit=32%2C32&amp;ssl=1" sizes="32x32">
+  <meta property="og:description"
+    content="SuperModerno is a media company and consultancy committed to making technology understandable for everyone.">
+  <meta property="og:image" content="https://supermoderno.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"
+    content="SuperModerno logo on a cream background">
+
+  <!-- SEO: Twitter Card aggiunta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SuperModerno">
+  <meta name="twitter:description"
+    content="SuperModerno is a media company and consultancy committed to making technology understandable for everyone.">
+  <meta name="twitter:image" content="https://supermoderno.com/assets/og-image.png">
+  <meta name="twitter:image:alt"
+    content="SuperModerno logo on a cream background">
+
+  <link rel="icon"
+    href="https://i0.wp.com/supermoderno.com/wp-content/uploads/2024/10/logo_sito-1.png?fit=32%2C32&amp;ssl=1"
+    sizes="32x32">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SuperModerno",
+    "url": "https://supermoderno.com",
+    "logo": "https://supermoderno.com/assets/SuperModerno-Logo-Black.svg",
+    "description": "SuperModerno is a media company and consultancy committed to making technology understandable for everyone.",
+    "founder": {
+      "@type": "Person",
+      "name": "Massimo Banzi",
+      "jobTitle": "Interaction Designer, Educator, Creative Technologist and Angel Investor",
+      "sameAs": "https://en.wikipedia.org/wiki/Massimo_Banzi"
+    },
+    "sameAs": [
+      "https://www.youtube.com/@supermodernotv",
+      "https://www.instagram.com/supermoderno.tv/",
+      "https://www.tiktok.com/@supermoderno.tv"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@supermoderno.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
 </head>
 
 <body>
   <section class="hero container">
+    <!-- <video src="assets/bozza.mov" autoplay muted loop playsinline preload="metadata"> </video> -->
     <a href="/" class="brand">
-      <img src="assets/SuperModerno-Logo-Black.svg" alt="SuperModerno">
+      <img src="assets/SuperModerno-Logo-Black.svg" alt="SuperModerno Logo">
     </a>
-    <p class="h2"> <b>SuperModerno</b> is a media company</br> and consultancy committed to making technology understandable
+    <p class="h2"> <b>SuperModerno</b> is a media company</br> and consultancy committed to making technology
+      understandable
       for
       everyone.</p>
   </section>
 
   <section class=" presentation container">
-  <p class="h3">We think the technology shaping your world shouldn't be a mystery, so we do something about it. 
-      We make that happen through <a class="pres"  href="https://www.youtube.com/@supermodernotv" target="_blank"">YouTube</a>,
-      <a class="pres" href=" https://www.instagram.com/supermoderno.tv/" target="_blank">Instagram</a> and <a class="pres" 
-        href="https://www.tiktok.com/@supermoderno.tv" target="_blank">TikTok</a> 
-        explaining, questioning and sparking curiosity. We also get hands-on with organizations ready to experiment and build.</p>
+    <p class="h3">We think the technology shaping your world shouldn't be a mystery, so we do something about it.
+      We make that happen through <a class="pres" href="https://www.youtube.com/@supermodernotv" target="_blank"
+        rel="noreferrer noopener">YouTube</a>,
+      <a class="pres" href=" https://www.instagram.com/supermoderno.com/" target="_blank"
+        rel="noreferrer noopener">Instagram</a> and <a class="pres" href="https://www.tiktok.com/@supermoderno.tv"
+        target="_blank" rel="noreferrer noopener">TikTok</a>
+      explaining, questioning and sparking curiosity. We also get hands-on with organizations ready to experiment and
+      build.
     </p>
-</section>
+    </p>
+  </section>
 
   <section class="about container">
     <p class="h3 bold">What we do.</p>
@@ -47,7 +97,9 @@
         <!-- <iframe class="ig-embed" src="https://www.instagram.com/reel/DYliWPbFCZu/embed" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy">
         </iframe> -->
         <div class="ig-embed">
-          <video src="assets/Minitel_1.webm" autoplay muted loop playsinline preload="metadata"> </video>
+          <video src="assets/Minitel_1.webm" autoplay muted loop playsinline preload="metadata" aria-hidden="true"
+            role="presentation"
+            title="Animated video on the history of the Minitel"> </video>
           <!-- poster="assets/media-communication-poster.jpg"> -->
         </div>
         <p class="h4 bold">Media & Communication</p>
@@ -56,7 +108,8 @@
       </div>
       <div class="sub-about container">
         <div class="ig-embed">
-          <video src="assets/Q01.webm" autoplay muted loop playsinline preload="metadata"> </video>
+          <video src="assets/Q01.webm" autoplay muted loop playsinline preload="metadata" role="presentation" aria-hidden="true"
+            title="Animated video of people working on a prototype"> </video>
           <!-- poster="assets/media-communication-poster.jpg"> -->
         </div>
         <p class="h4 bold">Innovation & Prototyping</p>
@@ -74,7 +127,7 @@
         Every technology was once <i>supermodern</i>: born from ambition, failure, experimentation and a particular idea
         of the future.</p>
     </div>
-    <div id="yt-strip" class="yt-strip" aria-label="Ultimi video da YouTube">
+    <div id="yt-strip" class="yt-strip" aria-label="Latest videos from YouTube">
       <!-- <p class="yt-msg">Caricamento video…</p> -->
     </div>
   </section>
@@ -90,8 +143,8 @@
           with technology without needing to be experts.</p>
 
       </div>
-      <img class="banzi-photo img" src="assets/massimo-today.webp" alt="Massimo Banzi">
-      <img class="banzi-photo img banzi-mac" src="assets/massimo.webp" alt="Massimo Banzi">
+      <img class="banzi-photo img" src="assets/massimo-today.webp" alt="Massimo Banzi, founder of SuperModerno">
+      <img class="banzi-photo img banzi-mac" src="assets/massimo.webp" alt=" young Massimo Banzi, founder of SuperModerno">
     </div>
   </section>
 
@@ -108,31 +161,33 @@
 
     <!-- <p class="h2">Where to find us!</p> -->
     <div class="socials row">
-        <a class="social-btn" href="https://www.youtube.com/@supermodernotv" target="_blank" rel="noreferrer noopener"
-        aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor">
+      <a class="social-btn" href="https://www.youtube.com/@supermodernotv" target="_blank" rel="noreferrer noopener"
+        aria-label="SuperModerno's YouTube Channel">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path
             d="M22.5 7.2c-.2-1.2-.9-2-2-2.2-1.8-.4-8.5-.4-8.5-.4s-6.7 0-8.5.4c-1.1.2-1.8 1-2 2.2C1.2 9 1.2 12 1.2 12s0 3 .3 4.8c.2 1.2.9 2 2 2.2 1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4c1.1-.2 1.8-1 2-2.2.3-1.8.3-4.8.3-4.8s0-3-.3-4.8zM9.8 15.5V8.5l5.8 3.5-5.8 3.5z" />
         </svg>
       </a>
       <a class="social-btn" href="https://www.instagram.com/supermoderno.tv/" target="_blank" rel="noreferrer noopener"
-        aria-label="Instagram">
+        aria-label="SuperModerno's Instagram Profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-          stroke-linejoin="round">
+          stroke-linejoin="round" aria-hidden="true">
           <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
           <circle cx="12" cy="12" r="4.2" />
           <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
         </svg>
       </a>
       <a class="social-btn" href="https://www.tiktok.com/@supermoderno.com" target="_blank" rel="noreferrer noopener"
-        aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="currentColor">
+        aria-label="SuperModerno's TikTok Profile">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path
             d="M16.6 2.5c.4 2.1 1.7 3.7 3.9 4.1v3.2c-1.5 0-2.9-.4-4.2-1.2v6.6c0 4.1-3.3 7.4-7.4 7.4S1.5 19.3 1.5 15.2s3.3-7.4 7.4-7.4c.4 0 .8 0 1.1.1v3.3c-.4-.1-.7-.2-1.1-.2-2.3 0-4.2 1.9-4.2 4.2s1.9 4.2 4.2 4.2 4.2-1.9 4.2-4.2V2.5h3.5z" />
         </svg>
       </a>
     </div>
-    <video class="img" src="assets/Olivetti_Lettera_22.webm" type="video/webm" muted loop playsinline></video>
+    <video class="img" src="assets/Olivetti_Lettera_22.webm" type="video/webm" muted loop playsinline aria-hidden="true"
+      role="presentation"
+      title="Someone typing on an Olivetti Lettera 22 typewriter"></video>
   </section>
 
 </body>

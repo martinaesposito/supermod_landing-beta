@@ -141,7 +141,8 @@ section.container {
 
 /* hero */
 section.container.hero {
-  background-color: var(--sm-cream-2);
+  position: relative;
+  /* background-color: var(--sm-cream-2); */
   background-image: url('assets/SuperModerno-S-Icon-White.svg');
   background-repeat: no-repeat;
   background-size: 105%;
@@ -149,6 +150,15 @@ section.container.hero {
   background-position: 20vw -36vh;
   padding-top: 10vh;
   gap: 7.5vh;
+}
+section.container.hero > video {
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index:-1;
 }
 
 /* pres */
